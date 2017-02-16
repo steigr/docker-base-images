@@ -1,6 +1,6 @@
 tag			:= steigr/coreos
-version ?= alpha
-release ?= current
+version		?= alpha
+release		?= current
 
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
@@ -22,6 +22,6 @@ Dockerfile:
 	printf 'FROM scratch\nMAINTAINER \\\n[Mathias Kaufmann <me@stei.gr>]\nENV container=docker\nADD $(shell ls $(shell basename $(current_dir))-$(version)-*.tar*) /' > Dockerfile
 
 scratch:
-	docker run --rm --interactive fedora:rawhide bash -x -s -- "$(version)" "$(release)" < scratch.sh | tar xz
+	docker run --rm --interactive fedora:rawhide bash -x -s -- "$(version)" "$(release)" < scratch.sh | tar x
 
 .PHONY: Dockerfile
