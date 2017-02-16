@@ -4,7 +4,7 @@ set -eo pipefail
 
 __compress() {
 	cd /coreos-base
-	tar c * | xz --best	> /coreos-${1}-${release:-$2}.tar.xz
+	tar c * | gzip -1	> /coreos-${1}-${release:-$2}.tar.gz
 	tar cC / "coreos-${1}-${release:-$2}.tar"*
 }
 
@@ -13,8 +13,8 @@ __detect_current() {
 }
 
 __prepare() {
-	local version=$1
-	local release=$2
+	export version=$1
+	export release=$2
 	mkdir /coreos-base
 	pushd /coreos-base
 	dnf install -y curl tar squashfs-tools cpio xz
