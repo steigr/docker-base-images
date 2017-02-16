@@ -5,7 +5,7 @@ set -eo pipefail
 __compress() {
 	cd /coreos-base
 	tar c * | gzip -1	> /coreos-${1}-${release:-$2}.tar.gz
-	tar cC / "coreos-${1}-${release:-$2}.tar"*
+	tar cC / $(ls "coreos-${1}-${release:-$2}.tar"*)
 }
 
 __detect_current() {
