@@ -1,6 +1,6 @@
 tag			:= steigr/coreos
 version		?= alpha
-release		?= current
+release		?= 1313.0.0
 
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
