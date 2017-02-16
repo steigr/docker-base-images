@@ -19,6 +19,6 @@ Dockerfile:
 	printf 'FROM scratch\nMAINTAINER \\\n[Mathias Kaufmann <me@stei.gr>]\nENV container=docker\nADD $(shell ls $(shell basename $(PWD))-$(version)-*.tar*) /' > Dockerfile
 
 scratch:
-	docker run --rm --interactive fedora:rawhide bash -x -s -- "$(version)" "$(release)" < scripts/create-base-image.sh | tar xz
+	docker run --rm --interactive fedora:rawhide bash -x -s -- "$(version)" "$(release)" < scratch.sh | tar xz
 
 .PHONY: Dockerfile
