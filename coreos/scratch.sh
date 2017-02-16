@@ -5,7 +5,7 @@ set -eo pipefail
 __compress() {
 	cd /coreos-base
 	dest=/coreos-${1}-${release:-$2}.tar.xz
-	tar c * | xz --best	> "$dest"
+	tar c * | xz -9e	> "$dest"
 	tar cC / "$dest"
 }
 
